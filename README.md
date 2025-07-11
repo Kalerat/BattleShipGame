@@ -52,7 +52,7 @@ A simple Battleships game implemented in C++ using SDL3 and CMake.
 
 5. **Build the project from the command line:**
    ```sh
-   cmake --build ..
+   cmake --build .
    ```
 
 6. **Run the game:**
