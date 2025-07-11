@@ -2,26 +2,80 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "Win_x64_Debug",
-            "displayName": "Win_x64_Debug",
-            "description": "Windows x64 Debug Build",
+            "name": "Win_x64_Debug_Ninja",
+            "displayName": "Win_x64_Debug_Ninja",
+            "description": "Windows x64 Debug Build with Ninja",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+                "SDL_STATIC": "ON",
+                "SDL_SHARED": "OFF"
             }
         },
         {
-            "name": "Win_x64_Release",
-            "displayName": "Win_x64_Release",
-            "description": "Windows x64 Release Build",
+            "name": "Win_x64_Release_Ninja",
+            "displayName": "Win_x64_Release_Ninja",
+            "description": "Windows x64 Release Build with Ninja",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "NO"
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "NO",
+                "SDL_STATIC": "ON",
+                "SDL_SHARED": "OFF"
             }
+        },
+        {
+            "name": "Win_x64_Debug_VS2022",
+            "displayName": "Win_x64_Debug_VS2022",
+            "description": "Windows x64 Debug Build with Visual Studio 2022",
+            "generator": "Visual Studio 17 2022",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+                "SDL_STATIC": "ON",
+                "SDL_SHARED": "OFF"
+            }
+        },
+        {
+            "name": "Win_x64_Release_VS2022",
+            "displayName": "Win_x64_Release_VS2022",
+            "description": "Windows x64 Release Build with Visual Studio 2022",
+            "generator": "Visual Studio 17 2022",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "NO",
+                "SDL_STATIC": "ON",
+                "SDL_SHARED": "OFF"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Win_x64_Debug_Ninja_Build",
+            "displayName": "Build Debug (Ninja)",
+            "configurePreset": "Win_x64_Debug_Ninja"
+        },
+        {
+            "name": "Win_x64_Release_Ninja_Build",
+            "displayName": "Build Release (Ninja)",
+            "configurePreset": "Win_x64_Release_Ninja"
+        },
+        {
+            "name": "Win_x64_Debug_VS2022_Build",
+            "displayName": "Build Debug (VS2022)",
+            "configurePreset": "Win_x64_Debug_VS2022",
+            "configuration": "Debug"
+        },
+        {
+            "name": "Win_x64_Release_VS2022_Build",
+            "displayName": "Build Release (VS2022)",
+            "configurePreset": "Win_x64_Release_VS2022",
+            "configuration": "Release"
         }
     ]
 }

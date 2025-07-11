@@ -15,7 +15,7 @@ A simple Battleships game implemented in C++ using SDL3 and CMake.
 - A C++ compiler with C++23 support (e.g., MSVC, GCC, Clang)
 - SDL3 (included as a submodule/vendor directory)
 
-### Generating Project Files with CMake
+### Building with CMake Presets
 
 1. **Clone the repository:**
    ```sh
@@ -23,13 +23,53 @@ A simple Battleships game implemented in C++ using SDL3 and CMake.
    cd BattleShipGame
    ```
 
-2. **Create a build directory (outside of src!):**
+2. **Configure the project using presets:**
+   
+   **For Visual Studio 2022 (Recommended for Windows):**
+   ```sh
+   # Debug configuration
+   cmake --preset Win_x64_Debug_VS2022
+   
+   # Release configuration
+   cmake --preset Win_x64_Release_VS2022
+   ```
+   
+   **For Ninja (Cross-platform):**
+   ```sh
+   # Debug configuration
+   cmake --preset Win_x64_Debug_Ninja
+   
+   # Release configuration
+   cmake --preset Win_x64_Release_Ninja
+   ```
+
+3. **Build the project:**
+   ```sh
+   # Visual Studio 2022 builds
+   cmake --build --preset Win_x64_Debug_VS2022_Build
+   cmake --build --preset Win_x64_Release_VS2022_Build
+   
+   # Ninja builds
+   cmake --build --preset Win_x64_Debug_Ninja_Build
+   cmake --build --preset Win_x64_Release_Ninja_Build
+   ```
+
+4. **Open and run with Visual Studio 2022:**
+   - After configuring with the VS2022 preset, open the generated `BattleShipGame.sln` file in the `build/Win_x64_Debug_VS2022/` or `build/Win_x64_Release_VS2022/` directory.
+   - Right-click the `BattleShipGame` project in the Solution Explorer and choose **Set as Startup Project**.
+   - Press `F5` to build and run the game.
+
+### Alternative: Manual CMake Commands
+
+If you prefer not to use presets, you can still use traditional CMake commands:
+
+1. **Create a build directory:**
    ```sh
    mkdir build
    cd build
    ```
 
-3. **Generate project files:**
+2. **Generate project files:**
    - For Visual Studio (Windows):
      ```sh
      cmake -G "Visual Studio 17 2022" -A x64 ..
@@ -38,30 +78,38 @@ A simple Battleships game implemented in C++ using SDL3 and CMake.
      ```sh
      cmake -G Ninja ..
      ```
-   - For Unix Makefiles (Linux/macOS):
-     ```sh
-     cmake -G "Unix Makefiles" ..
-     ```
 
-4. **Open, build, and run with Visual Studio (Windows):**
-   - Open the generated `BattleShipGame.sln` file in the `build` directory with Visual Studio.
-   - Select the desired build configuration (e.g., `Debug` or `Release`).
-   - Right-click the `BattleShipGame` project in the Solution Explorer and choose **Set as Startup Project**.
-   - Click **Build > Build Solution** (or press `Ctrl+Shift+B`).
-   - Click **Local Windows Debugger** (green play button) or press `F5` to run the game.
-
-5. **Build the project from the command line:**
+3. **Build the project:**
    ```sh
-   cmake --build ..
+   cmake --build .
    ```
 
 6. **Run the game:**
-   - The executable will be in the build output directory (e.g., `build/Win_x64_Debug/` on Windows).
+   - The executable will be in the build output directory:
+     - Visual Studio builds: `build/Win_x64_Debug_VS2022/src/Debug/` or `build/Win_x64_Release_VS2022/src/Release/`
+     - Ninja builds: `build/Win_x64_Debug_Ninja/src/` or `build/Win_x64_Release_Ninja/src/`
+
+## Available CMake Presets
+
+The project includes the following CMake presets for easy configuration and building:
+
+### Configure Presets:
+- `Win_x64_Debug_VS2022` - Debug build for Visual Studio 2022
+- `Win_x64_Release_VS2022` - Release build for Visual Studio 2022
+- `Win_x64_Debug_Ninja` - Debug build with Ninja generator
+- `Win_x64_Release_Ninja` - Release build with Ninja generator
+
+### Build Presets:
+- `Win_x64_Debug_VS2022_Build` - Build Debug configuration (VS2022)
+- `Win_x64_Release_VS2022_Build` - Build Release configuration (VS2022)
+- `Win_x64_Debug_Ninja_Build` - Build Debug configuration (Ninja)
+- `Win_x64_Release_Ninja_Build` - Build Release configuration (Ninja)
 
 ## Notes
+- CMake presets automatically create separate build directories for each configuration to avoid conflicts.
 - SDL3 is included in the `vendor/SDL` directory and is added as a subdirectory in CMake.
-- Always run CMake from the `build` directory and specify the source as `..` to avoid cluttering the `src` folder with build files.
-- You can adjust the CMake generator and build type as needed for your platform and IDE.
+- The presets are configured to work from the project root directory (no need to create or navigate to a build folder manually).
+- Visual Studio 2022 presets generate `.sln` files that can be opened directly in the IDE.
 
 ## License
 This project is licensed under the MIT License.
