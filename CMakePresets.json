@@ -1,0 +1,27 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "Win_x64_Debug",
+            "displayName": "Win_x64_Debug",
+            "description": "Windows x64 Debug Build",
+            "generator": "Ninja",
+            "binaryDir": "${workspaceFolder}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
+            }
+        },
+        {
+            "name": "Win_x64_Release",
+            "displayName": "Win_x64_Release",
+            "description": "Windows x64 Release Build",
+            "generator": "Ninja",
+            "binaryDir": "${workspaceFolder}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "NO"
+            }
+        }
+    ]
+}
