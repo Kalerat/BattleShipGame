@@ -26,31 +26,38 @@ A simple Battleships game implemented in C++ using SDL3 and CMake.
 2. **Configure the project using presets:**
    
    **For Visual Studio 2022 (Recommended for Windows):**
+   Debug configuration:
    ```sh
-   # Debug configuration
    cmake --preset Win_x64_Debug_VS2022
-   
-   # Release configuration
+   ```
+   Release configuration:
+   ```sh
    cmake --preset Win_x64_Release_VS2022
    ```
    
    **For Ninja (Cross-platform):**
+   Debug configuration:
    ```sh
-   # Debug configuration
    cmake --preset Win_x64_Debug_Ninja
-   
-   # Release configuration
+   ```
+   Release configuration:
+   ```sh
    cmake --preset Win_x64_Release_Ninja
    ```
 
 3. **Build the project:**
+   Visual Studio 2022 builds:
    ```sh
-   # Visual Studio 2022 builds
    cmake --build --preset Win_x64_Debug_VS2022_Build
+   ```
+   ```sh
    cmake --build --preset Win_x64_Release_VS2022_Build
-   
-   # Ninja builds
+   ```
+   Ninja builds:
+   ```sh
    cmake --build --preset Win_x64_Debug_Ninja_Build
+   ```
+   ```sh
    cmake --build --preset Win_x64_Release_Ninja_Build
    ```
 
@@ -64,20 +71,24 @@ A simple Battleships game implemented in C++ using SDL3 and CMake.
 If you prefer not to use presets, you can still use traditional CMake commands:
 
 1. **Create a build directory:**
+   Create the build directory:
    ```sh
    mkdir build
+   ```
+   Change to the build directory:
+   ```sh
    cd build
    ```
 
 2. **Generate project files:**
-   - For Visual Studio (Windows):
-     ```sh
-     cmake -G "Visual Studio 17 2022" -A x64 ..
-     ```
-   - For Ninja (cross-platform):
-     ```sh
-     cmake -G Ninja ..
-     ```
+   For Visual Studio (Windows):
+   ```sh
+   cmake -G "Visual Studio 17 2022" -A x64 ..
+   ```
+   For Ninja (cross-platform):
+   ```sh
+   cmake -G Ninja ..
+   ```
 
 3. **Build the project:**
    ```sh
